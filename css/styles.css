@@ -1,0 +1,271 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  --first-color: hsl(5, 95%, 58%);
+  --first-color-alt: hsl(5, 90%, 50%);
+  --title-color: hsl(5, 15%, 15%);
+  --text-color: hsl(5, 8%, 35%);
+  --white-color: hsl(0, 0%, 100%);
+  --body-color: #f3f3f3;
+
+  /*========== Font and typography ==========*/
+  --body-font: "Montserrat", sans-serif;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-normal: 1;
+  --z-modal: 1000;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: #f3f3f3;
+  color: var(--text-color);
+  margin-top: 80px; /* Ajusta este valor según la altura de tu barra de navegación */
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== TOP BAR ===============*/
+.top-bar {
+    background-color: #0033A0; /* Color similar al de la imagen proporcionada */
+    color: #FFFFFF;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000; /* Asegura que la barra esté por encima de otros elementos */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.logo img {
+    height: 60px; /* Ajusta la altura del logo según sea necesario */
+    margin-bottom: 10px; /* Espacio entre el logo y los enlaces de navegación */
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*=============== CARD ===============*/
+main .container {
+  padding-block: 5rem;
+}
+
+.container__title {
+  font-size: var(--h1-font-size);
+  text-align: center;
+  color: var(--title-color);
+  margin-bottom: 3rem;
+}
+
+.articles {
+  display: flex;
+  gap: 2rem;
+  justify-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card__product {
+  position: relative;
+  background-color: var(--white-color);
+  border: 3px solid #2cac94;
+  border-radius: .5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .3s;
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+}
+
+.card__product img {
+  width: 100%;
+  height: auto;
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+}
+
+.card__product:hover {
+  transform: scale(1.05);
+}
+
+.card__product-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--white-color);
+  padding: 0.5rem;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.card__product-title h3 {
+  font-size: var(--h2-font-size);
+  color: var(--white-color);
+  margin: 0;
+}
+
+/*=============== POPUP MODAL ===============*/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s, visibility .3s;
+  z-index: var(--z-modal);
+}
+
+.modal.active-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__card {
+  background-color: var(--white-color);
+  padding: 0;
+  border-radius: .5rem;
+  position: relative;
+  max-width: 80%;
+  max-height: 80%;
+  text-align: center;
+  overflow: auto;
+  color: white;
+}
+
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.modal__close:hover {
+  color: var(--first-color);
+}
+
+.modal__image {
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.modal__header {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.modal__header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.modal__header p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.modal__content {
+  padding: 2rem;
+  background: var(--white-color);
+  color: var(--text-color);
+  text-align: left;
+}
+
+.modal__content h2 {
+  font-size: var(--h2-font-size);
+  margin-bottom: 1rem;
+}
+
+.modal__content p {
+  margin-bottom: 1rem;
+}
+
+.modal__content iframe {
+  width: 100%;
+  height: 315px;
+  margin-top: 1rem;
+}
